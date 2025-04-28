@@ -153,7 +153,7 @@ Backend API runs at `http://localhost:5000/`
 
 # Repository Link
 
-> [**GitHub Repository**](https://github.com/your-username/TaskManager)
+> [**GitHub Repository**](https://github.com/Maithon921/Task-Management)
 
 ---
 
