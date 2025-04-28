@@ -3,14 +3,13 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import axiosCustom from "../utils/axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { deleteTask, updateTask } from "../redux/taskSlice";
 
 function TaskCard({ task }) {
   const [isDelete, setIsDelete] = useState(false);
-  const { tasks } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
@@ -26,7 +25,6 @@ function TaskCard({ task }) {
   const toggleTask = async () => {
     try {
       const response = await axiosCustom.put(`task/status/${task._id}`);
-      console.log(response.data.task);
       dispatch(updateTask(response.data.task));
     } catch (err) {
       console.log(err);

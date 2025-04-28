@@ -30,6 +30,9 @@ A full-stack Task Management application built with the MERN stack (MongoDB, Exp
 
 ## Setup Instructions
 
+### Log in detail
+- use email john@gmail.com and password john to check seeded items
+
 ### Backend Setup
 
 1. Navigate to backend folder:
