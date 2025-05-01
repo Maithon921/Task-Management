@@ -20,9 +20,11 @@ function DisplayTask() {
     ? JSON.parse(localStorage.getItem("detail"))
     : null;
 
-  loggedIn &&
     useEffect(() => {
       const fetchTask = async () => {
+        if(!loggedIn){
+          return;
+        }
         dispatch(fetchTasksStart());
         try {
           const response = await axiosCustom.get("task/all");
@@ -32,17 +34,17 @@ function DisplayTask() {
         }
       };
       fetchTask();
-    }, []);
+    }, [loggedIn]);
 
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "all") return task;
+    if (filter === "all") return tasks;
     if (filter === "active") return task.status === "active";
     if (filter === "completed") return task.status === "completed";
   });
 
   return (
     <div className="min-h-[calc(100vh-6em)] flex flex-col items-center justify-start bg-gray-50 p-4 ">
-      {/* If not logged in, show the login prompt */}
+      {/* If not logged in, show the login message */}
       {!loggedIn ? (
         <div className="text-center max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-12">
           <h2 className="text-3xl font-semibold text-gray-800 mb-4">
@@ -61,7 +63,7 @@ function DisplayTask() {
       ) : (
         <div className=" flex flex-col items-center mt-5">
           <h2 className="text-3xl  text-center font-bold text-textMain mb-6 capitalize">
-            Welcome back, {currentUser.name}!
+            Welcome, {currentUser.name}!
           </h2>
 
           {/* Add Task Button */}

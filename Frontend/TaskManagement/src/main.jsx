@@ -43,10 +43,6 @@ const appRouter = createBrowserRouter([
         path: "/detail/:id",
         element: <TaskDetail />,
       },
-      // {
-      //   path:"*",
-      //   element:<ErrorPage/>,
-      // }
     ],
   },
 ]);

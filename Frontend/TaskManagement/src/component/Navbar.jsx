@@ -19,9 +19,9 @@ function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(removeTask())
     setIsDropdownOpen(!isDropdownOpen);
     toast.success("Log out Succesfull!");
-    navigate("/");
   };
 
   const hanldeDeleteAccount = async () => {
